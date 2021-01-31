@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import './Login.css';
 import axiosClient from '../utils/axios';
 
-const Login = () => {
+const Login = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const login = async (event) => {
     event.preventDefault();
     const response = await axiosClient.post('/user/login', { name: username, password: password });
-    axiosClient.defaults.headers.common['auth-token'] = response.headers['auth-token'];
+    const token = response.headers['auth-token'];
+    setToken(token);
+    axiosClient.defaults.headers.common['auth-token'] = token;
   };
 
   const usernameChangeHandler = (event) => {

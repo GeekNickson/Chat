@@ -45,3 +45,9 @@ input[type='password'] {
   width: 50%;
   border-radius: 1rem;
 }
+
+@media screen and (max-width: 501px) {
+  .form-content {
+    width: 80%;
+  }
+}
