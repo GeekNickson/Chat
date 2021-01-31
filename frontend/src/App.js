@@ -1,5 +1,5 @@
 import './App.css';
-import Login from './components/Login';
+import Login from './components/Auth';
 import Chat from './components/Chat';
 import React from 'react';
 import { useToken } from './hooks/useToken';
@@ -10,7 +10,11 @@ const App = () => {
   const { token, setToken } = useToken();
 
   if (!token) {
-    return <Login setToken={setToken} />;
+    return (
+      <div className="App">
+        <Login setToken={setToken} />
+      </div>
+    );
   } else {
     axiosClient.defaults.headers.common['auth-token'] = token;
   }
@@ -19,7 +23,7 @@ const App = () => {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/chat">
+          <Route path="/">
             <Chat />
           </Route>
         </Switch>
