@@ -50,7 +50,10 @@ router.post('/login', async (req, res) => {
   }
 
   const token = jwt.sign({ _id: user.id }, process.env.SECRET);
-  res.header('auth-token', token).send({ token, msg: messageConstants.AUTH_SUCCESS_MSG });
+  res
+    .header('Access-Control-Expose-Headers', 'auth-token')
+    .header('auth-token', token)
+    .json({ msg: messageConstants.AUTH_SUCCESS_MSG });
 });
 
 router.get('/user', verifyToken, (req, res) => {
