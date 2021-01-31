@@ -14,4 +14,4 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopo
 app.use(express.json());
 app.use('/api/user', authRoute);
 
-app.listen(3000, () => console.log('Up and Running'));
+app.listen(8080, () => console.log('Up and Running'));
