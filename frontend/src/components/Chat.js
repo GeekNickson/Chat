@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import axiosClient from '../utils/axios';
+import './Chat.css';
 
 const Chat = () => {
   useEffect(() => {
